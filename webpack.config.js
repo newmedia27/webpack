@@ -47,6 +47,16 @@ let config = {
                     'sass-loader'
                 ]
             },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/,
+                use: [
+                    {
+                        loader:"url-loader",
+                        // options:{ limit:1000, name:"[name].[ext]" }
+                    },
+                    "image-webpack-loader"
+                ]
+            }
         ]
     },
     resolve: {
@@ -68,8 +78,7 @@ let config = {
             filename: 'js/modernizr.js'
         }),
         new CopyWebpackPlugin([
-            { from: 'src/img', to: 'img', force: true },
-            { from: 'src/fonts', to: 'fonts', force: true }
+            { from: 'src/img', to: 'img', force: true }
         ])
 
     ],
